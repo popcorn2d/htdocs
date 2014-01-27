@@ -2,7 +2,7 @@
 header("Content-Type: text/html; charset=UTF-8");
 include_once("config.php");
 # Версия сайта
-$revision = "0.0.19";
+$revision = "0.0.20";
 
 checkLoggedIn("yes");
 #print("<b>".$_SESSION["login"]."</b>! Добро пожаловать<br>\n");
@@ -18,7 +18,6 @@ while ($result = mysql_fetch_array($query)) {
 	$hour_all = $result['hour_all'];
 	$hour_green = $result['hour_green'];
 	$hour_red = $hour_all - $hour_green;
-	// Resume
 }
 echo
 <<<END
@@ -42,8 +41,6 @@ echo
 <div id="page">
         <div id="content">
             <div id="userArea">
-END;
-echo <<<END
                 <span>$real_name</span>
                 <span>(UID: $uid)</span>
                 <span>Группа: $group</span>
@@ -55,12 +52,6 @@ echo <<<END
                         <span class="number">$hour_all</span>
                         <span class="text">часов пропусков</span>
                     </div>
-                    <!--
-                    <div id="skipLessonBar">
-                        <span class="percent">125% пропусков</span>
-                        <p class="skipLessonBar">21</p>
-                    </div>
-                    !-->
                     <div id="skipLessonDetail">
                         <div id="skipLessonDetailGreen">
                             <p class="skipLessonDetailText">$hour_green</p>
@@ -113,40 +104,45 @@ echo <<<END
                     <div class="titleBox">Список предметов</div>
                     <div id="listOfLessonContent">
 END;
-$mark = mysql_query("SELECT * FROM philosophy, math WHERE $uid") or die(mysql_error());
+$mark = mysql_query("SELECT * FROM mark WHERE uid=$uid") or die(mysql_error());
 while ($mark_resume = mysql_fetch_array($mark)) {
 		$num_rows = mysql_num_rows($mark);
-		$marks = $mark_resume['mark'];
+		$marks = $mark_resume['marks'];
+		$subject_id = $mark_resume['subject_id'];
 		$x=0;
+		switch ($subject_id) {
+			case '1': // Русский язык
+				$subject_id = "Русский язык";
+				break;
+			#
+
+		}
 			do
 			{
-				// Выводим таблицу с предметом
-				$table = mysql_field_table($mark, $x);
-				// Переводим данные из таблицы в названия предметов
+					// Выводим таблицу с предметом
+					// $table = mysql_field_table($mark, $x);
+					// Переводим данные из таблицы в названия предметов
 
-				// Выводим данные из таблицы с предметом
-				$markContent =  "
-				<div id='listOfLessonGroup' class='green'>
-					<div class='nameLesson'>$table</div>
-					<div class='markLesson dropDownMark'>Оценки
-						<div class='dropDownContent'>$marks</div>
-					</div>
-				</div>";
+					// Выводим данные из таблицы с предметом
+					$markContent =  "
+					<div id='listOfLessonGroup' class='green'>
+						<div class='nameLesson'>$subject_id</div>
+						<div class='markLesson dropDownMark'>Оценки
+							<div class='dropDownContent'>$marks</div>
+						</div>
+					</div>";
+				}
+				while ($x++>$num_rows);
 			}
-			while ($x++>$num_rows);
-		}
 		// Вывод конечных данных
 		echo $markContent;
 echo <<<END
-Сделать поиск по всем таблицам предметов
                     </div>
                 </div>
             </div>
         </div>
         <div id="footer">
-            <div id="copy">
-                <a href="http://bozzylab.ru">BozzyLab</a> 2013 &copy; Revision: $revision <a href="/" class="right">Гатчинский Педагогический Колледж</a>
-            </div>
+			<a href="http://bozzylab.ru">BozzyLab</a> 2013 &copy; Revision: $revision <a href="/" class="right">Гатчинский Педагогический Колледж</a>
         </div>
     </div>
     <!-- Yandex.Metrika informer -->
