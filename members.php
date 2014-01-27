@@ -2,8 +2,7 @@
 header("Content-Type: text/html; charset=UTF-8");
 include_once("config.php");
 # Версия сайта
-$revision = "0.0.20";
-
+$revision = "0.0.21";
 checkLoggedIn("yes");
 #print("<b>".$_SESSION["login"]."</b>! Добро пожаловать<br>\n");
 $login = $_SESSION["login"];
@@ -68,33 +67,22 @@ while ($result_resume = mysql_fetch_array($resume)) {
 		$links = "http://".$result_resume['links'];
 		$subject_id = $result_resume['subject_id'];
 		$group = $result_resume['group'];
-
-		if($subject_id == 1)
-		{
-			$subject_id = "Физика";
-		}
-		elseif ($subject_id == 2)
-		{
-			$subject_id = "Информатика";
-		}
 		$num_rows = mysql_num_rows($resume);
 		$x=0;
 			do
 			{
-				$resumeContent =  "<a href=$links target='_blank'>$subject_id</a><br>";
+				$resumeContent =  "<a href=$links target='_blank'>$subject_id</a>";
 			}
 			while ($x++>$num_rows);
-
-			if($num_rows == 0)
+}
+if(!isset($num_rows))
 			{
-				$resumeContent = "Null";
-				echo $resumeContent;
+				echo "Нет данных";
 			}
 			else
 			{
 				echo $resumeContent;
 			}
-}
 echo <<<END
                     </div>
                 </div>
@@ -115,7 +103,6 @@ while ($mark_resume = mysql_fetch_array($mark)) {
 				$subject_id = "Русский язык";
 				break;
 			#
-
 		}
 			do
 			{
@@ -135,7 +122,14 @@ while ($mark_resume = mysql_fetch_array($mark)) {
 				while ($x++>$num_rows);
 			}
 		// Вывод конечных данных
-		echo $markContent;
+if(!isset($num_rows))
+			{
+				echo "Нет данных";
+			}
+			else
+			{
+				echo $markContent;
+			}
 echo <<<END
                     </div>
                 </div>
