@@ -12,7 +12,7 @@ while ($result = mysql_fetch_array($query)) {
 	$login = $result['login'];
 	$uid = $result['id'];
 	$real_name = $result['real_name'];
-	$group = $result['group'];
+	$group = $result['groups'];
 	$token = $result['token'];
 	$hour_all = $result['hour_all'];
 	$hour_green = $result['hour_green'];
@@ -25,9 +25,7 @@ echo
         <title>GPC CP</title>
         <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic&subset=latin,cyrillic-ext,latin-ext,cyrillic' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="main.css">
-        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 	  	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-	  	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
  		<script>
 		  $(function() {
 		    $(".dropDownMark").click(function() {
@@ -62,11 +60,11 @@ echo
                     <div id="resume">
                         <div class="titleBox">Лекции</div>
 END;
-$resume = mysql_query("SELECT * FROM `resume` WHERE `group`=$group") or die(mysql_error());
+$resume = mysql_query("SELECT * FROM `resume` WHERE `groups`=$group") or die(mysql_error());
 while ($result_resume = mysql_fetch_array($resume)) {
 		$links = "http://".$result_resume['links'];
 		$subject_id = $result_resume['subject_id'];
-		$group = $result_resume['group'];
+		$group = $result_resume['groups'];
 		$num_rows = mysql_num_rows($resume);
 		$x=0;
 			do
@@ -120,9 +118,7 @@ while ($mark_resume = mysql_fetch_array($mark)) {
 					</div>";
 				}
 				while ($x++>$num_rows);
-			}
-		// Вывод конечных данных
-if(!isset($num_rows))
+				if(!isset($num_rows))
 			{
 				echo "Нет данных";
 			}
@@ -130,6 +126,8 @@ if(!isset($num_rows))
 			{
 				echo $markContent;
 			}
+			}
+		// Вывод конечных данных
 echo <<<END
                     </div>
                 </div>

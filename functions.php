@@ -3,6 +3,7 @@ function connectToDB() {
   global $link, $dbhost, $dbuser, $dbpass, $dbname;
   ($link = mysql_pconnect("$dbhost", "$dbuser", "$dbpass")) || die("Couldn't connect to MySQL");
   mysql_select_db("$dbname", $link) || die("Couldn't open db: $dbname. Error if any was: ".mysql_error() );
+   mysql_set_charset('utf8');
 }
 
 function newUser($login, $password) {
