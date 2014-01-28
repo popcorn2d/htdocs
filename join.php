@@ -26,7 +26,7 @@ if(isset($_POST["submit"]) and (!$_POST['hide'])) {
 
     cleanMemberSession($_POST["login"], $_POST["password"]);
 
-    header("Location: members.php");
+    header("Location: view.php");
   }
 }
 ?>

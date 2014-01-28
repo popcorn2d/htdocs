@@ -22,7 +22,7 @@ if(isset($_POST["submit"]) and (!$_POST['hide'])) {
 
   cleanMemberSession($row["login"], $row["password"]);
 
-header("Location: members.php");
+header("Location: view.php");
 } else {
   doIndex();
 }
