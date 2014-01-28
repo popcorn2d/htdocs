@@ -22,6 +22,35 @@ a:hover {
 	text-decoration: underline;
 }
 
+input[type='text'], input[type='password'] {
+	margin-bottom: 5px;
+	margin-top: 5px;
+	padding: 5px 10px 5px 10px;
+	border-radius: 4px;
+	border: none;
+	font-size: 18px;
+	font-family: 'PT Sans', sans-serif;
+	font-variant: small-caps;
+	width: 100%;
+}
+
+button, input[type='submit'], input[type='button'], #button {
+	padding: 5px 10px 5px 10px;
+	border: 1px solid;
+	font-size: 14px;
+	border-radius: 4px;
+	background-color: #09F;
+	color: #fff;
+}
+
+button:hover, input[type='submit']:hover, #button:hover {
+	background-color: #09A;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+/* Атрибуты */
+
 .left {
 	float: left;
 }
@@ -41,43 +70,25 @@ a:hover {
 .hide {
 	display: none !important;
 }
+/* Цвета */
 
-input[type='text'], input[type='password'] {
-	margin: 5px 0px 5px 0px;
-	padding: 5px 10px 5px 10px;
-	border-radius: 5px;
-	border: none;
-	font-size: 18px;
-	font-family: 'PT Sans', sans-serif;
-	font-variant: small-caps;
-	width: 100%;
+.red {
+	background-color: #ff4136;
 }
 
-button, input[type='submit'], input[type='button'], #button {
-	margin: 5px 0px 5px 0px;
-	padding: 5px 10px 5px 10px;
-	border: 1px solid;
-	border-radius: 3px;
-	background-color: #09F;
-	color: #fff;
-	font-size: 18px;
-	font-family: 'PT Sans', sans-serif;
-	font-variant: small-caps;
+.yellow {
+	background-color: #ffdc00;
 }
 
-button:hover, input[type='submit']:hover, #button:hover {
-	background-color: #09A;
-	cursor: pointer;
-	text-decoration: none;
+.green {
+	background-color: #2ecc40;
 }
 
 .titleBox {
-	display: block;
 	font-size: 36px;
-	text-align: center;
 }
 
-/* Form */
+/* Логин форма */
 
 #login_box {
 	position: relative;
@@ -86,15 +97,14 @@ button:hover, input[type='submit']:hover, #button:hover {
 	margin: 0 auto;
 	padding: 10px;
 	width: 400px;
-	border-radius: 5px;
-	background-color: #3d9970;
+	border-radius: 4px;
+	background-image: url(bg.jpg);
 	box-shadow: inset 0px 0px 10px 0px #ccc;
 
 }
 
 	#login_form {
 		color: #fff;
-		font-size: 18px;
 	}
 
 		#logo_login_box {
@@ -134,145 +144,42 @@ button:hover, input[type='submit']:hover, #button:hover {
 		width: 480px;
 	}
 
-		#userArea {
-
+		#skipLessonTotal .number {
+			font-size: 48px;
 		}
 
-			#userArea span {
-				font-size: 24px;
-			}
-
-		#skipLesson {
-			display: block;
-
+		#skipLessonTotal .text {
+			font-size: 24px;
 		}
-
-			#skipLessonTotal {
-
+			#skipLessonDetailGreen, #skipLessonDetailRed {
+				height: 100px;
+				display: inline-block;
 			}
 
-				#skipLessonTotal .number {
-					font-size: 48px;
-				}
-
-				#skipLessonTotal .text {
-					font-size: 24px;
-				}
-
-				.percent {
-					color: #fff;
-					text-align: center;
-				}
-
-				.skipLessonBar {
-				    display: block;
-				    -webkit-appearance: none;
-				}
-				.skipLessonBar {
-				    background-color: #ff4136;
-				    border-radius: 5px;
-				    text-align: right;
-				    display: block;
-				    color: #fff;
-				    position: relative;
-				    height: 170px;
-				    line-height: 170px;
-				    font-size: 48px;
-				    width: 400px; /* option */
-				}
-				.skipLessonBar::before {
-				    background: #2ecc40;
-				    content: '4';
-				    text-align: center;
-				    border: none;
-				    border-radius: 5px;
-				    border-top-right-radius: 0px;
-				    border-bottom-right-radius: 0px;
-				    border-right: 3px solid #fff;
-				    position: absolute;
-				    top: 0;
-				    left: 0;
-				    height: 170px;
-				    width: 50%;
-				}
-				@-webkit-keyframes bgmove {
-				    from { background-position: 0 0,0 0, 0 0;}
-				    to { background-position: 0 0, 5px 0, 0 0;}
-				}
-
-			#skipLessonDetail {
-				text-align: center;
+			#skipLessonDetailRed {
+				width: 50%;
+				float: right;
+				border-bottom-right-radius: 10px;
+				border-top-right-radius: 10px;
 			}
-				#skipLessonDetailGreen {
-					border-bottom-left-radius: 10px;
-					border-top-left-radius: 10px;
-					background-color: #2ecc40;
-					width: 50%;
-					float: left;
-					height: 100px;
-					display: inline-block;
-				}
 
-				#skipLessonDetailRed {
-					display: block;
-					border-bottom-right-radius: 10px;
-					border-top-right-radius: 10px;
-					background-color: #ff4136;
-					width: 50%;
-					float: right;
-					height: 100px;
-					display: inline-block;
+			#skipLessonDetailGreen {
+				width: 50%;
+				float: left;
+				border-bottom-left-radius: 10px;
+				border-top-left-radius: 10px;
+			}
 
-				}
-
-				#skipLessonDetailGreen:hover, #skipLessonDetailRed:hover {
-					box-shadow: 0px 0px 5px 0px #fff;
-					cursor: pointer;
-				}
-
-				.skipLessonDetailText {
-					font-size: 48px;
-					color: #fff;
-					padding-top: 20px;
-				}
-
-			#resume {
-				border-radius: 10px;
+			.skipLessonDetailText {
+				font-size: 48px;
 				color: #fff;
+				padding-top: 20px;
 			}
 
-				#resume a {
-					display: block;
-					width: 100%;
-					color: #fff;
-					text-decoration: none;
-					margin-bottom: 20px;
-				}
-
-
-				#resume a:hover {
-					text-decoration: underline;
-				}
-
-				#resume p {
-					padding-bottom: 20px;
-					font-size: 24px;
-				}
-
-				#lCol, #rCol {
-					width: 50%;
-					
-				}
-
-				#lCol {
-					float: left;
-					
-				}
-
-				#rCol {
-					float: right;
-				}
-
+		#resume {
+			border-radius: 10px;
+			color: #fff;
+		}
 
 
 	#rightCol {
@@ -287,37 +194,9 @@ button:hover, input[type='submit']:hover, #button:hover {
 			color: #fff;
 		}
 
-			#listOfLessonLegend {
-				padding-top: 100px;
-				text-align: center;
-			}
-
-				#listOfLessonLegend div {
-					display: inline-block;
-					margin-left: 20px;
-					margin-right: 20px;
-					margin-bottom: 30px;
-					border-radius: 50%;
-					width: 36px;
-					height: 36px;
-				}
-
-					.red {
-						background-color: #ff4136;
-					}
-
-					.yellow {
-						background-color: #ffdc00;
-					}
-
-					.green {
-						background-color: #2ecc40;
-					}
-
 			#listOfLessonContent {
 				font-weight: 200;
 				color: #fff;
-				font-variant: small-caps;
 				padding-top: 5px;
 			}
 
@@ -331,14 +210,9 @@ button:hover, input[type='submit']:hover, #button:hover {
 						padding: 10px;
 					}
 
-						.nameLesson {
-							text-align: left;
-						}
-
 						.markLesson {
 							text-transform: uppercase;
 							border-top: 1px solid #000;
-							text-align: center;
 						}
 
 						.dropDownMark {

@@ -2,7 +2,9 @@
 header("Content-Type: text/html; charset=UTF-8");
 include_once("config.php");
 # Версия сайта
-$revision = "0.0.21";
+$revision = "0.0.25";
+# Заголовок
+$title = "Гатчинский Педагогический Колледж";
 checkLoggedIn("yes");
 #print("<b>".$_SESSION["login"]."</b>! Добро пожаловать<br>\n");
 $login = $_SESSION["login"];
@@ -22,7 +24,7 @@ echo
 <<<END
 <html>
     <head>
-        <title>GPC CP</title>
+        <title>$title</title>
         <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic&subset=latin,cyrillic-ext,latin-ext,cyrillic' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="main.css">
 	  	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
@@ -32,7 +34,7 @@ echo
 		      $(this).find(".dropDownContent").toggleClass( "show");
 		    });
 		  });
-  </script>
+  		</script>
     </head>
     <body>
 <div id="page">
@@ -41,24 +43,28 @@ echo
                 <span>$real_name</span>
                 <span>(UID: $uid)</span>
                 <span>Группа: $group</span>
+                <span>Токен: $token</span>
                 <span class="right"><a href="logout.php" id="button">Выйти</a></span>
             </div>
+END;
+echo
+<<<END
             <div id="leftCol">
                 <div id="skipLesson">
                     <div id="skipLessonTotal">
                         <span class="number">$hour_all</span>
                         <span class="text">часов пропусков</span>
                     </div>
-                    <div id="skipLessonDetail">
-                        <div id="skipLessonDetailGreen">
+                    <div id="skipLessonDetail" class="center">
+                        <div id="skipLessonDetailGreen" class="green">
                             <p class="skipLessonDetailText">$hour_green</p>
                         </div>
-                        <div id="skipLessonDetailRed">
+                        <div id="skipLessonDetailRed" class="red">
                             <p class="skipLessonDetailText">$hour_red</p>
                         </div>
                     </div>
                     <div id="resume">
-                        <div class="titleBox">Лекции</div>
+                        <div class="titleBox center">Лекции</div>
 END;
 $resume = mysql_query("SELECT * FROM `resume` WHERE `groups`=$group") or die(mysql_error());
 while ($result_resume = mysql_fetch_array($resume)) {
@@ -69,11 +75,11 @@ while ($result_resume = mysql_fetch_array($resume)) {
 		$x=0;
 			do
 			{
-				$resumeContent =  "<a href=$links target='_blank'>$subject_id</a>";
+				$resumeContent =  "<a href='$links' id='button' target='_blank'>$subject_id</a>";
 			}
 			while ($x++>$num_rows);
 }
-if(!isset($num_rows))
+		if(!isset($num_rows))
 			{
 				echo "Нет данных";
 			}
@@ -87,7 +93,7 @@ echo <<<END
             </div>
             <div id="rightCol">
                 <div id="listOfLesson">
-                    <div class="titleBox">Список предметов</div>
+                    <div class="titleBox center">Список предметов</div>
                     <div id="listOfLessonContent">
 END;
 $mark = mysql_query("SELECT * FROM mark WHERE uid=$uid") or die(mysql_error());
@@ -97,10 +103,18 @@ while ($mark_resume = mysql_fetch_array($mark)) {
 		$subject_id = $mark_resume['subject_id'];
 		$x=0;
 		switch ($subject_id) {
+			# Группа 511
 			case '1': // Русский язык
 				$subject_id = "Русский язык";
 				break;
-			#
+
+			case '2': // Русский язык
+				$subject_id = "Литература";
+				break;
+
+			case '3': // Русский язык
+				$subject_id = "Отечественная история";
+				break;
 		}
 			do
 			{
@@ -111,8 +125,8 @@ while ($mark_resume = mysql_fetch_array($mark)) {
 					// Выводим данные из таблицы с предметом
 					$markContent =  "
 					<div id='listOfLessonGroup' class='green'>
-						<div class='nameLesson'>$subject_id</div>
-						<div class='markLesson dropDownMark'>Оценки
+						<div>$subject_id</div>
+						<div class='markLesson dropDownMark center'>Оценки
 							<div class='dropDownContent'>$marks</div>
 						</div>
 					</div>";
@@ -173,4 +187,5 @@ style="width:88px; height:31px; border:0; display:none;" alt="Яндекс.Ме�
 </body>
 </html>
 END;
+mysql_close();
 ?>
