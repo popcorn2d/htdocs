@@ -5,15 +5,17 @@ $title = "GPC CP";
 
 if(isset($_POST["submit"]) and (!$_POST['hide'])) {
   field_validator("login name", $_POST["login"], "alphanumeric", 4, 15);
-  field_validator("password", $_POST["password"], "string", 4, 15);
+  field_validator("password", $_POST["password"], "string", 4, 100);
   if($messages){
     doIndex();
     exit;
   }
 
-    if( !($row = checkPass($_POST["login"], $_POST["password"])) ) {
+    if( !($row = checkPass($_POST["login"], md5($_POST["password"]))) ) {
         $messages[]="Неверная пара логин/пароль";
     }
+
+    echo md5($_POST['password']);
 
   if($messages){
     doIndex();

@@ -2,7 +2,7 @@
 header("Content-Type: text/html; charset=UTF-8");
 include_once("config.php");
 # Версия сайта
-$revision = "0.0.25";
+$revision = "0.0.26";
 # Заголовок
 $title = "Гатчинский Педагогический Колледж";
 checkLoggedIn("yes");
@@ -27,7 +27,7 @@ echo
         <title>$title</title>
         <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic&subset=latin,cyrillic-ext,latin-ext,cyrillic' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="main.css">
-	  	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	  	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
  		<script>
 		  $(function() {
 		    $(".dropDownMark").click(function() {

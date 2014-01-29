@@ -5,8 +5,8 @@ $title="Страница регистрации студентов";
 
 if(isset($_POST["submit"]) and (!$_POST['hide'])) {
   field_validator("login name", $_POST["login"], "alphanumeric", 4, 15);
-  field_validator("password", $_POST["password"], "string", 4, 15);
-  field_validator("confirmation password", $_POST["password2"], "string", 4, 15);
+  field_validator("password", $_POST["password"], "string", 4, 100);
+  field_validator("confirmation password", $_POST["password2"], "string", 4, 100);
 
   if(strcmp($_POST["password"], $_POST["password2"])) {
 
@@ -22,7 +22,7 @@ if(isset($_POST["submit"]) and (!$_POST['hide'])) {
   }
 
   if(empty($messages)) {
-    newUser($_POST["login"], $_POST["password"]);
+    newUser($_POST["login"], md5($_POST["password"]));
 
     cleanMemberSession($_POST["login"], $_POST["password"]);
 
