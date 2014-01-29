@@ -2,7 +2,7 @@
 header("Content-Type: text/html; charset=UTF-8");
 include_once("config.php");
 # Версия сайта
-$revision = "0.0.26";
+$revision = "0.0.27";
 # Заголовок
 $title = "Гатчинский Педагогический Колледж";
 checkLoggedIn("yes");
@@ -35,21 +35,49 @@ echo
 		    });
 		  });
   		</script>
+	<script>
+var hour_all = "$hour_all";
+var hour_green = "$hour_green";
+var hour_red = "$hour_red";
+green = (hour_green/(hour_all * 0.01))*9.7;
+red = (hour_red/(hour_all * 0.01))*9.7;
+
+if(green > 0) {
+$(document).ready(function() {
+    $('#skipLessonDetailGreen').css('width', green);
+    $('#skipLessonDetailRed').css('width', red);
+});
+}
+if(red === 0)
+{
+	$(document).ready(function() {
+    $('#skipLessonDetailRed').addClass('hide');
+});
+}
+
+device.height
+</script>
     </head>
     <body>
 <div id="page">
-        <div id="content">
-            <div id="userArea">
+<div id="userArea">
                 <span>$real_name</span>
                 <span>(UID: $uid)</span>
                 <span>Группа: $group</span>
                 <span>Токен: $token</span>
                 <span class="right"><a href="logout.php" id="button">Выйти</a></span>
             </div>
+        <div id="content">
 END;
+#if($token == 'user') {
+#	echo "user";
+#}
+#elseif($token == 'admin') {
+#	echo "admin";
+#}
 echo
 <<<END
-            <div id="leftCol">
+            <div id="user">
                 <div id="skipLesson">
                     <div id="skipLessonTotal">
                         <span class="number">$hour_all</span>
@@ -63,35 +91,9 @@ echo
                             <p class="skipLessonDetailText">$hour_red</p>
                         </div>
                     </div>
-                    <div id="resume">
-                        <div class="titleBox center">Лекции</div>
-END;
-$resume = mysql_query("SELECT * FROM `resume` WHERE `groups`=$group") or die(mysql_error());
-while ($result_resume = mysql_fetch_array($resume)) {
-		$links = "http://".$result_resume['links'];
-		$subject_id = $result_resume['subject_id'];
-		$group = $result_resume['groups'];
-		$num_rows = mysql_num_rows($resume);
-		$x=0;
-			do
-			{
-				$resumeContent =  "<a href='$links' id='button' target='_blank'>$subject_id</a>";
-			}
-			while ($x++>$num_rows);
-}
-		if(!isset($num_rows))
-			{
-				echo "Нет данных";
-			}
-			else
-			{
-				echo $resumeContent;
-			}
-echo <<<END
-                    </div>
+            	</div>
                 </div>
-            </div>
-            <div id="rightCol">
+            <div id="mark">
                 <div id="listOfLesson">
                     <div class="titleBox center">Список предметов</div>
                     <div id="listOfLessonContent">
@@ -146,6 +148,46 @@ echo <<<END
                     </div>
                 </div>
             </div>
+            <div id="resume" class="">
+                        <div class="titleBox center">Лекции</div>
+END;
+$resume = mysql_query("SELECT * FROM `resume` WHERE `groups`=$group") or die(mysql_error());
+while ($result_resume = mysql_fetch_array($resume)) {
+		$links = "http://".$result_resume['links'];
+		$subject_id = $result_resume['subject_id'];
+		$group = $result_resume['groups'];
+		$num_rows = mysql_num_rows($resume);
+		$x=0;
+		switch ($subject_id) {
+			# Группа 511
+			case '1': // Русский язык
+				$subject_id = "Русский язык";
+				break;
+
+			case '2': // Русский язык
+				$subject_id = "Литература";
+				break;
+
+			case '3': // Русский язык
+				$subject_id = "Отечественная история";
+				break;
+		}
+			do
+			{
+				$resumeContent =  "<a href='$links' id='button' target='_blank'>$subject_id</a>";
+			}
+			while ($x++>$num_rows);
+}
+		if(!isset($num_rows))
+			{
+				echo "Нет данных";
+			}
+			else
+			{
+				echo $resumeContent;
+			}
+echo <<<END
+                    </div>
         </div>
         <div id="footer">
 			<a href="http://bozzylab.ru">BozzyLab</a> 2013 &copy; Revision: $revision <a href="/" class="right">Гатчинский Педагогический Колледж</a>

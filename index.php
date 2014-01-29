@@ -52,12 +52,6 @@ function doIndex() {
         </form>
     </div>
 </div>
-<!--<?php $var = "Hello, world"; ?>
-<script>
-var a = "<?php echo $var; ?>";
-document.write(a);
-</script>
-!-->
 <!-- Yandex.Metrika informer -->
 <a href="http://metrika.yandex.ru/stat/?id=23663236&amp;from=informer"
 target="_blank" rel="nofollow"><img src="//bs.yandex.ru/informer/23663236/3_1_FFFFFFFF_EFEFEFFF_0_pageviews"

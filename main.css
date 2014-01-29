@@ -7,7 +7,6 @@
 
 html, body {
 	font-family: 'PT Sans';
-	font-variant: small-caps;
 	text-rendering: optimizeLegibility;
 }
 
@@ -36,15 +35,14 @@ input[type='text'], input[type='password'] {
 
 button, input[type='submit'], input[type='button'], #button {
 	padding: 5px 10px 5px 10px;
-	border: 1px solid;
-	font-size: 14px;
 	border-radius: 4px;
-	background-color: #09F;
+	border: none;
+	background-color: #85144B;
 	color: #fff;
 }
 
 button:hover, input[type='submit']:hover, #button:hover {
-	background-color: #09A;
+	background-color: #B10DC9;
 	cursor: pointer;
 	text-decoration: none;
 }
@@ -70,6 +68,11 @@ button:hover, input[type='submit']:hover, #button:hover {
 .hide {
 	display: none !important;
 }
+
+.border {
+	border-radius: 10px;
+}
+
 /* Цвета */
 
 .red {
@@ -116,33 +119,37 @@ button:hover, input[type='submit']:hover, #button:hover {
 /* MainPage */
 
 #page {
-	display: block;
 	height: auto;
-	width: 1000px;
-	margin: 0px auto;
 	color: #fff;
 	background-image: url(bg.jpg);
 	box-shadow: 0 0 20px #ccc;
-}
-
-#header {
-	display: block;
+	padding: 10px;
 	margin: 0 auto;
-	text-align: center;
-	font-size: 36px;
-	/*background-image: url(flo_c.jpg);*/
-	background-repeat: no-repeat;
+	width: 1000px;
 }
 
 #content {
-	display: inline-block;
-	padding: 10px;
+	display: block;
 }
-	#leftCol {
-		display: inline-block;
-		float: left;
-		width: 480px;
-	}
+
+#userArea {
+	padding-bottom: 10px;
+}
+
+#resume, #user, #mark {
+	padding: 10px;
+	border-radius: 10px;
+	margin: 5px;
+}
+
+#mark, #resume {
+	width: 46%;
+	display: inline-table;
+}
+
+#resume {
+	position: relative;
+}
 
 		#skipLessonTotal .number {
 			font-size: 48px;
@@ -153,18 +160,16 @@ button:hover, input[type='submit']:hover, #button:hover {
 		}
 			#skipLessonDetailGreen, #skipLessonDetailRed {
 				height: 100px;
+				width: 480px;
 				display: inline-block;
 			}
 
 			#skipLessonDetailRed {
-				width: 50%;
-				float: right;
 				border-bottom-right-radius: 10px;
 				border-top-right-radius: 10px;
 			}
 
 			#skipLessonDetailGreen {
-				width: 50%;
 				float: left;
 				border-bottom-left-radius: 10px;
 				border-top-left-radius: 10px;
@@ -172,39 +177,13 @@ button:hover, input[type='submit']:hover, #button:hover {
 
 			.skipLessonDetailText {
 				font-size: 48px;
-				color: #fff;
 				padding-top: 20px;
-			}
-
-		#resume {
-			border-radius: 10px;
-			color: #fff;
-		}
-
-
-	#rightCol {
-		width: 500px;
-		float: right;
-	}
-
-		#listOfLesson {
-			border-radius: 10px;
-			padding: 10px;
-			width: 490px;
-			color: #fff;
-		}
-
-			#listOfLessonContent {
-				font-weight: 200;
-				color: #fff;
-				padding-top: 5px;
 			}
 
 				#listOfLessonGroup {
 					margin-bottom: 10px;
 					border-radius: 5px;
 				}
-
 
 					#listOfLessonGroup div {
 						padding: 10px;
@@ -224,13 +203,9 @@ button:hover, input[type='submit']:hover, #button:hover {
 						.dropDownContent {
 							display: none;
 						}
-
-
-
 #footer {
-	padding: 10px;
+	display: block;
 }
-
 	#footer a {
 		color: #fff;
 	}
