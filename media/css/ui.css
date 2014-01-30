@@ -1,0 +1,192 @@
+@charset "UTF-8";
+/* CSS Document */
+/* UI */
+
+.button {
+	float: left;
+	padding-right: 10px;
+	padding-left: 10px;
+	width: auto;
+	height: auto;
+	border-right: 1px solid #fff;
+	border-radius: 0px;
+	color: #fff;
+	font-size: 20px;
+	line-height: 40px;
+}
+
+.button:hover {
+	background-color: #09A !important;
+	color: #FFF;
+	text-decoration: none !important;
+}
+
+input[type='text'], input[type='password'] {
+	position: relative;
+	border: none;
+	height: 32px;
+	width: 100%;
+	line-height: 32px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding: 0 16px;
+	font-size: 14px;
+	color: #fff;
+	text-decoration: none;
+	display: inline-block;
+	vertical-align: middle;
+	text-shadow: none;
+	border-radius: 5px;
+}
+
+button, input[type='submit'], input[type='button'], #button {
+	position: relative;
+	border: none;
+	height: 32px;
+	line-height: 32px;
+	padding: 0 16px;
+	font-size: 14px;
+	margin-bottom: 5px;
+	color: #fff;
+	text-decoration: none;
+	text-align: center;
+	display: inline-block;
+	vertical-align: middle;
+	background-color: #85144B;
+	text-shadow: none;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+button:hover, input[type='submit']:hover, #button:hover {
+	background-color: #FF851B;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.left-btn-admin, .second-left-btn-admin {
+	margin: 0;
+	padding: 5px;
+	width: 250px;
+	height: 27px;
+	border: none;
+	border-radius: 0px;
+	background-color: #444;
+	text-align: left;
+	font-family: "eurof35";
+	font-size: 16px;
+}
+
+.left-btn-admin:hover {
+	background-color: #333;
+}
+
+.second-left-btn-admin {
+	padding-left: 15px;
+}
+
+.left-btn-status {
+	float: right;
+	color: #fff;
+	text-transform: none;
+	font-style: normal;
+	font-size: 20px;
+	line-height: 15px;
+}
+
+.left-btn-status-active {
+}
+
+.title {
+	margin-left: 10px;
+	font-size: 50px;
+	font-family: "eurof35";
+}
+
+.title_box {
+	font-size: 24px;
+	font-family: "eurof35";
+}
+
+.padding10 {
+	padding: 10px;
+}
+
+.footer-title {
+	color: #FFF;
+	font-size: 42px;
+}
+
+.box {
+	float: left;
+	margin: 5px;
+	padding: 5px;
+	border-radius: 5px;
+	box-shadow: 0 0px 2px #09F;
+}
+.action_btn {
+	background:#6b0c36 !important;
+	color:#fff !important;
+}
+
+.disable {
+	background-color: #ccc !important;
+	color: #999 !important;
+}
+
+.disable:hover {
+	background-color: #ccc !important;
+	color: #999 !important;
+	cursor: default;
+}
+
+a {
+	color: #09F;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+@charset "UTF-8";
+/* CSS Document */
+
+.hide {
+	display: none;
+}
+
+.show {
+	display: block;
+}
+
+.fixed {
+	position: fixed;
+}
+
+.opacity0 {
+	opacity: 0;
+}
+
+.opacity50 {
+	opacity: 0.5;
+}
+
+.opacity1 {
+	opacity: 1;
+}
+
+.opacity {
+	width: 100%;
+	height: 100%;
+	background-image: url(images/back.png);
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+	border: none;
+}

@@ -1,8 +1,8 @@
 <?php
 header("Content-Type: text/html; charset=UTF-8");
-include_once("config.php");
+include_once("../config.php");
 # Версия сайта
-$revision = "0.0.27";
+$revision = "0.0.28";
 # Заголовок
 $title = "Гатчинский Педагогический Колледж";
 checkLoggedIn("yes");
@@ -26,7 +26,7 @@ echo
     <head>
         <title>$title</title>
         <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic&subset=latin,cyrillic-ext,latin-ext,cyrillic' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="/media/css/main.css">
 	  	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
  		<script>
 		  $(function() {
@@ -39,8 +39,8 @@ echo
 var hour_all = "$hour_all";
 var hour_green = "$hour_green";
 var hour_red = "$hour_red";
-green = (hour_green/(hour_all * 0.01))*9.7;
-red = (hour_red/(hour_all * 0.01))*9.7;
+green = (hour_green/(hour_all * 0.01))*10;
+red = (hour_red/(hour_all * 0.01))*10;
 
 if(green > 0) {
 $(document).ready(function() {
@@ -65,7 +65,7 @@ device.height
                 <span>(UID: $uid)</span>
                 <span>Группа: $group</span>
                 <span>Токен: $token</span>
-                <span class="right"><a href="logout.php" id="button">Выйти</a></span>
+                <span class="right"><a href="../logout.php" id="button">Выйти</a></span>
             </div>
         <div id="content">
 END;
@@ -103,6 +103,7 @@ while ($mark_resume = mysql_fetch_array($mark)) {
 		$num_rows = mysql_num_rows($mark);
 		$marks = $mark_resume['marks'];
 		$subject_id = $mark_resume['subject_id'];
+		$comment = $mark_resume['comment'];
 		$x=0;
 		switch ($subject_id) {
 			# Группа 511
@@ -129,7 +130,7 @@ while ($mark_resume = mysql_fetch_array($mark)) {
 					<div id='listOfLessonGroup' class='green'>
 						<div>$subject_id</div>
 						<div class='markLesson dropDownMark center'>Оценки
-							<div class='dropDownContent'>$marks</div>
+							<div class='dropDownContent'>$marks<br><p class='left'>$comment</p></div>
 						</div>
 					</div>";
 				}
@@ -174,7 +175,7 @@ while ($result_resume = mysql_fetch_array($resume)) {
 		}
 			do
 			{
-				$resumeContent =  "<a href='$links' id='button' target='_blank'>$subject_id</a>";
+				$resumeContent =  "<a href='$links' id='button' class='center' target='_blank'>$subject_id</a>";
 			}
 			while ($x++>$num_rows);
 }
@@ -190,7 +191,7 @@ echo <<<END
                     </div>
         </div>
         <div id="footer">
-			<a href="http://bozzylab.ru">BozzyLab</a> 2013 &copy; Revision: $revision <a href="/" class="right">Гатчинский Педагогический Колледж</a>
+			<a href="http://bozzylab.ru">BozzyLab Group</a>  &copy; 2013-2014 Revision: $revision <a href="/" class="right">Гатчинский Педагогический Колледж</a>
         </div>
     </div>
     <!-- Yandex.Metrika informer -->
