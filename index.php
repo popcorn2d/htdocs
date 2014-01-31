@@ -1,3 +1,7 @@
+<?php 
+header("Content-Type: text/html; charset=UTF-8");
+include_once("config.php");
+?>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -92,18 +96,15 @@ background-image:url(media/images/news/3.jpg)
 </style>
 </head>
 <body>
-	<div id="cp">
-		<li>
-			<a href="#" class="button">GPC.RU</a>
-            <a href="#" class="button">Настройки</a>
-            <a href="#" class="button">Расписание</a>
-            <a href="#" class="button">Файлы</a>
-            <a href="#disable" class="button disable">Архив</a>
-            <a href="#disable" class="button disable" title="В разработке">Урок</a>
-            <a href="/login" class="button right">Войти</a>
-		</li>
-	</div>
 	<div id="mainPage">
+        <div id="cp">
+            <a href="" id="button">Настройки</a>
+            <a href="" id="button">Расписание</a>
+            <a href="" id="button">Файлы</a>
+            <a href="" id="button" class="disable" title="В разработке">Архив</a>
+            <a href="" id="button" class="disable" title="В разработке">Урок</a>
+            <a href="/login" id="button" class="right"><?php if(isset($_SESSION['login'])) {echo "Личный кабинет";}else{echo "Войти";}?></a>
+        </div>
     	<div id="header">
 			<div id="logo">
             	<a href="/" id="title">Гатчинский Педагогический Колледж</a>
@@ -158,7 +159,6 @@ background-image:url(media/images/news/3.jpg)
             </div>
         </div>
         <div id="footer">
-        	<div id="logo-footer"></div>
             <div id="footer-content">
             	<div>
                 	<span class="footer-title">Аккаунт</span>

@@ -34,7 +34,7 @@ function doIndex() {
 <head>
 <title><?php print $title;?></title>
 <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic&subset=latin,cyrillic-ext,latin-ext,cyrillic' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="../main.css">
+<link rel="stylesheet" href="/media/css/main.css">
 </head>
 <body>
 <div id="login_box">

@@ -2,15 +2,13 @@
 header("Content-Type: text/html; charset=UTF-8");
 include_once("../config.php");
 # Версия сайта
-$revision = "0.0.28";
+$revision = "0.0.29";
 # Заголовок
 $title = "Гатчинский Педагогический Колледж";
 checkLoggedIn("yes");
-#print("<b>".$_SESSION["login"]."</b>! Добро пожаловать<br>\n");
 $login = $_SESSION["login"];
 $query = mysql_query("SELECT * FROM users WHERE login='$login' LIMIT 1");
 while ($result = mysql_fetch_array($query)) {
-	// User
 	$login = $result['login'];
 	$uid = $result['id'];
 	$real_name = $result['real_name'];
@@ -39,8 +37,8 @@ echo
 var hour_all = "$hour_all";
 var hour_green = "$hour_green";
 var hour_red = "$hour_red";
-green = (hour_green/(hour_all * 0.01))*10;
-red = (hour_red/(hour_all * 0.01))*10;
+green = (hour_green/(hour_all * 0.01))*9.4;
+red = (hour_red/(hour_all * 0.01))*9.4;
 
 if(green > 0) {
 $(document).ready(function() {
@@ -69,13 +67,8 @@ device.height
             </div>
         <div id="content">
 END;
-#if($token == 'user') {
-#	echo "user";
-#}
-#elseif($token == 'admin') {
-#	echo "admin";
-#}
-echo
+if($token == 'user') {
+	echo
 <<<END
             <div id="user">
                 <div id="skipLesson">
@@ -143,7 +136,7 @@ while ($mark_resume = mysql_fetch_array($mark)) {
 			{
 				echo $markContent;
 			}
-			}
+	}
 		// Вывод конечных данных
 echo <<<END
                     </div>
@@ -190,10 +183,49 @@ while ($result_resume = mysql_fetch_array($resume)) {
 echo <<<END
                     </div>
         </div>
-        <div id="footer">
-			<a href="http://bozzylab.ru">BozzyLab Group</a>  &copy; 2013-2014 Revision: $revision <a href="/" class="right">Гатчинский Педагогический Колледж</a>
-        </div>
-    </div>
+END;
+}
+elseif($token == 'admin') {
+	echo "<div id='listOfLessonGroup' class='green'><div>Список студентов</div><div class='markLesson dropDownMark'>";
+$query = mysql_query("SELECT * FROM users LIMIT 10") or die(mysql_error());
+while ($mark_resume = mysql_fetch_array($query)) {
+		$num_rows = mysql_num_rows($query);
+		$id = $mark_resume['id'];
+		$hour_all = $mark_resume['hour_all'];
+		$hour_green = $mark_resume['hour_green'];
+		$real_name = $mark_resume['real_name'];
+		$groups = $mark_resume['groups'];
+		$x=0;
+			do
+			{
+					// Выводим данные из таблицы с пользователями
+					$markContent =  "
+					<div class='dropDownContent'>$real_name<br>
+					<input type='text' value='$id' placeholder='Идентификатор'>
+					<input type='text' value='$hour_all' placeholder='Всего пропусков'>
+					<input type='text' value='$hour_green' placeholder='По уважительной'>
+					<input type='text' value='$real_name' placeholder='ФИО'>
+					<input type='text' value='$groups' placeholder='Группа'>
+					</div>";
+				}
+				while ($x++>$num_rows);
+				if(!isset($num_rows))
+			{
+				echo "Нет данных";
+			}
+			else
+			{
+				echo $markContent;
+			}
+	}
+echo "</div></div>";
+}
+mysql_close();
+?>
+<div id="footer">
+			<a href="http://bozzylab.ru">BozzyLab Group</a>  &copy; 2013-2014 Revision: <?php echo $revision;?> <a href="/" class="right">Гатчинский Педагогический Колледж</a>
+</div>
+</div>
     <!-- Yandex.Metrika informer -->
 <a href="http://metrika.yandex.ru/stat/?id=23663236&amp;from=informer"
 target="_blank" rel="nofollow"><img src="//bs.yandex.ru/informer/23663236/3_1_FFFFFFFF_EFEFEFFF_0_pageviews"
@@ -229,6 +261,3 @@ style="width:88px; height:31px; border:0; display:none;" alt="Яндекс.Ме�
 <!-- /Yandex.Metrika counter -->
 </body>
 </html>
-END;
-mysql_close();
-?>
