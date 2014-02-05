@@ -62,7 +62,6 @@ device.height
                 <span>$real_name</span>
                 <span>(UID: $uid)</span>
                 <span>Группа: $group</span>
-                <span>Токен: $token</span>
                 <span class="right"><a href="../logout.php" id="button">Выйти</a></span>
             </div>
         <div id="content">

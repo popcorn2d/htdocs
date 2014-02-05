@@ -128,7 +128,6 @@ background-image:url(media/images/news/3.jpg)
                 <a href="#"><div>Документы</div></a>
                 <a href="#"><div>Контакты</div></a>
             </div>
-            <div id="up-line"></div>
         </div>
         <div id="content">
                     <div id="menuWrapper" class="menuWrapper bg1">

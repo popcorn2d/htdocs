@@ -397,7 +397,7 @@ button:hover, input[type='submit']:hover, #button:hover {
 /*--- ВЫПАДАЮЩИЕ ПУНКТЫ ---*/
 	#navigation ul{
 		position:absolute;
-		top: 45px;
+		top: 40px;
 		left:-9999px;
 		list-style:none;
 	}
