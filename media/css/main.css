@@ -167,9 +167,8 @@ button:hover, input[type='submit']:hover, #button:hover {
 	color: #fff;
 	background-image: url(/media/images/bg.jpg);
 	box-shadow: 0 0 20px #ccc;
-	padding: 10px;
 	margin: 0 auto;
-	width: 940px;
+	width: 960px;
 }
 
 #content {
@@ -181,13 +180,14 @@ button:hover, input[type='submit']:hover, #button:hover {
 	height: 32px;
 }
 
-#resume, #user, #mark {
+#resume, #user, #userArea, #mark {
 	border-radius: 10px;
+	padding: 10px;
 }
 
 #mark, #resume {
 	padding-top: 20px;
-	width: 465px;
+	width: 458px;
 	display: inline-table;
 }
 
@@ -223,6 +223,7 @@ button:hover, input[type='submit']:hover, #button:hover {
 				#listOfLessonGroup {
 					margin-bottom: 10px;
 					border-radius: 5px;
+					padding: 10px;
 				}
 
 					#listOfLessonGroup div {
@@ -248,7 +249,7 @@ button:hover, input[type='submit']:hover, #button:hover {
 
 #mainPage {
 	margin: 0 auto;
-	width: 100%;
+	width: 960px;
 	height: auto;
 	background-color: #FFF;
 	-webkit-box-shadow: 0 10px 30px rgba(0,0,0,0.5);

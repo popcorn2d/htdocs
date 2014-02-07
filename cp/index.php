@@ -2,7 +2,6 @@
 header("Content-Type: text/html; charset=UTF-8");
 include_once("../config.php");
 # Версия сайта
-$revision = "0.0.29";
 # Заголовок
 $title = "Гатчинский Педагогический Колледж";
 checkLoggedIn("yes");
@@ -33,28 +32,26 @@ echo
 		    });
 		  });
   		</script>
-	<script>
-var hour_all = "$hour_all";
-var hour_green = "$hour_green";
-var hour_red = "$hour_red";
-green = (hour_green/(hour_all * 0.01))*9.4;
-red = (hour_red/(hour_all * 0.01))*9.4;
+		<script>
+		var hour_all = "$hour_all";
+		var hour_green = "$hour_green";
+		var hour_red = "$hour_red";
+		green = (hour_green/(hour_all * 0.01))*9.4;
+		red = (hour_red/(hour_all * 0.01))*9.4;
 
-if(green > 0) {
-$(document).ready(function() {
-    $('#skipLessonDetailGreen').css('width', green);
-    $('#skipLessonDetailRed').css('width', red);
-});
-}
-if(red === 0)
-{
-	$(document).ready(function() {
-    $('#skipLessonDetailRed').addClass('hide');
-});
-}
-
-device.height
-</script>
+		if(green > 0) {
+		$(document).ready(function() {
+		    $('#skipLessonDetailGreen').css('width', green);
+		    $('#skipLessonDetailRed').css('width', red);
+		});
+		}
+		if(red === 0)
+		{
+			$(document).ready(function() {
+		    $('#skipLessonDetailRed').addClass('hide');
+		});
+		}
+		</script>
     </head>
     <body>
 <div id="page">
@@ -121,8 +118,9 @@ while ($mark_resume = mysql_fetch_array($mark)) {
 					$markContent =  "
 					<div id='listOfLessonGroup' class='green'>
 						<div>$subject_id</div>
-						<div class='markLesson dropDownMark center'>Оценки
-							<div class='dropDownContent'>$marks<br><p class='left'>$comment</p></div>
+						<div class='markLesson center'>
+							<p class=''>$marks</p>
+							<p class=''>$comment</p>
 						</div>
 					</div>";
 				}
@@ -185,7 +183,7 @@ echo <<<END
 END;
 }
 elseif($token == 'admin') {
-	echo "<div id='listOfLessonGroup' class='green'><div>Список студентов</div><div class='markLesson dropDownMark'>";
+	echo "<div id='listOfLessonGroup' class='green'><div>Список студентов</div><div class='markLesson'>";
 $query = mysql_query("SELECT * FROM users LIMIT 10") or die(mysql_error());
 while ($mark_resume = mysql_fetch_array($query)) {
 		$num_rows = mysql_num_rows($query);
@@ -199,7 +197,7 @@ while ($mark_resume = mysql_fetch_array($query)) {
 			{
 					// Выводим данные из таблицы с пользователями
 					$markContent =  "
-					<div class='dropDownContent'>$real_name<br>
+					<div class=''>$real_name<br>
 					<input type='text' value='$id' placeholder='Идентификатор'>
 					<input type='text' value='$hour_all' placeholder='Всего пропусков'>
 					<input type='text' value='$hour_green' placeholder='По уважительной'>
@@ -221,42 +219,4 @@ echo "</div></div>";
 }
 mysql_close();
 ?>
-<div id="footer">
-			<a href="http://bozzylab.ru">BozzyLab Group</a>  &copy; 2013-2014 Revision: <?php echo $revision;?> <a href="/" class="right">Гатчинский Педагогический Колледж</a>
-</div>
-</div>
-    <!-- Yandex.Metrika informer -->
-<a href="http://metrika.yandex.ru/stat/?id=23663236&amp;from=informer"
-target="_blank" rel="nofollow"><img src="//bs.yandex.ru/informer/23663236/3_1_FFFFFFFF_EFEFEFFF_0_pageviews"
-style="width:88px; height:31px; border:0; display:none;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" onclick="try{Ya.Metrika.informer({i:this,id:23663236,lang:'ru'});return false}catch(e){}"/></a>
-<!-- /Yandex.Metrika informer -->
-
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-(function (d, w, c) {
-    (w[c] = w[c] || []).push(function() {
-        try {
-            w.yaCounter23663236 = new Ya.Metrika({id:23663236,
-                    webvisor:true,
-                    clickmap:true,
-                    trackLinks:true,
-                    accurateTrackBounce:true});
-        } catch(e) { }
-    });
-
-    var n = d.getElementsByTagName("script")[0],
-        s = d.createElement("script"),
-        f = function () { n.parentNode.insertBefore(s, n); };
-    s.type = "text/javascript";
-    s.async = true;
-    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
-
-    if (w.opera == "[object Opera]") {
-        d.addEventListener("DOMContentLoaded", f, false);
-    } else { f(); }
-})(document, window, "yandex_metrika_callbacks");
-</script>
-<noscript><div><img src="//mc.yandex.ru/watch/23663236" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
-</body>
-</html>
+<?php getFooter(); ?>

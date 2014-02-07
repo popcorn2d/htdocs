@@ -6,6 +6,196 @@ function connectToDB() {
    mysql_set_charset('utf8');
 }
 
+// Tempalate
+
+// Header
+function getHeader() {
+
+if(isset($_SESSION['login'])) {
+  $navi = "Личный кабинет";
+}
+else {
+  $navi = "Войти";
+}
+  echo <<<END
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Гатчинский Педагогический Колледж им. К. Д. Ушинского</title>
+<script src="//use.edgefonts.net/pt-sans.js"></script>
+<link rel="stylesheet" href="/media/css/main.css">
+<link rel="stylesheet" href="media/css/colorbox.css" type="text/css" media="screen" />
+<script type="text/javascript" src="media/js/jquery.js"></script>
+<script type="text/javascript" src="media/js/jquery.colorbox-min.js"></script>
+<script type="text/javascript" src="media/js/jquery.bgpos.js"></script>
+<script>
+$("a[href='#top']").click(function() {
+  $("html, body").animate({ scrollTop: 0 }, "slow");
+  return false;
+});
+</script>
+</head>
+<body>
+  <div id="mainPage">
+        <div id="cp">
+            <a href="" id="button">Настройки</a>
+            <a href="" id="button">Расписание</a>
+            <a href="" id="button">Файлы</a>
+            <a href="" id="button" class="disable" title="В разработке">Архив</a>
+            <a href="" id="button" class="disable" title="В разработке">Урок</a>
+            <a href="/login" id="button" class="right">$navi</a>
+        </div>
+      <div id="header">
+      <div id="logo">
+              <a href="/" id="title">Гатчинский Педагогический Колледж</a>
+      </div>
+            <div id="up-line"></div>
+      </div>
+END;
+}
+
+// Navigation
+
+function getNav() {
+  echo <<<END
+            <div id="navigation">
+          <li>
+              <a href="#"><div>О колледже</div></a>
+              <ul>
+                <a href="#"><li>Очень очень длинная запись</li></a>
+                <a href="#"><li>Test</li></a>
+                <a href="#"><li>Test</li></a>
+                <a href="#"><li>Test</li></a>
+              </ul>
+            </li>
+                <a href="#"><div>Абитуриенту</div></a>
+                <a href="#"><div>Студенту</div></a>
+                <a href="#"><div>Базовая школа</div></a>
+                <a href="#"><div>Библиотека</div></a>
+                <a href="#"><div>Фото галерея</div></a>
+                <a href="#"><div>Документы</div></a>
+                <a href="#"><div>Контакты</div></a>
+            </div>
+END;
+}
+
+// Footer
+
+function getFooter() {
+  $revision = "Revision 0.0.30";
+  echo <<<END
+  <div id="footer">
+            <div id="footer-content">
+              <div>
+                  <span class="footer-title">Аккаунт</span>
+                      <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                </div>
+                <div>
+                  <span class="footer-title">Аккаунт</span>
+                      <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                </div>
+                <div>
+                  <span class="footer-title">Аккаунт</span>
+                      <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                </div>
+                <div>
+                  <span class="footer-title">Аккаунт</span>
+                      <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                </div>
+                <div>
+                  <span class="footer-title">Аккаунт</span>
+                      <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                </div>
+                <div>
+                  <span class="footer-title">Аккаунт</span>
+                      <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                </div>
+            </div>
+            <div id="line"></div>
+            <div id="copy"><a href="http://bozzylab.ru">BozzyLab Group</a>  &copy; 2013-2014 $revision <a href="/" class="right">Гатчинский Педагогический Колледж</a></div>
+        </div>
+    </div>
+    <!-- Yandex.Metrika informer -->
+<a href="http://metrika.yandex.ru/stat/?id=23409682&amp;from=informer"
+target="_blank" rel="nofollow"><img src="//bs.yandex.ru/informer/23409682/3_1_FFFFFFFF_EFEFEFFF_0_pageviews"
+style="width:88px; height:31px; border:0; display:none;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" onclick="try{Ya.Metrika.informer({i:this,id:23409682,lang:'ru'});return false}catch(e){}"/></a>
+<!-- /Yandex.Metrika informer -->
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter23409682 = new Ya.Metrika({id:23409682,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    trackHash:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/23409682" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</body>
+</html>
+END;
+}
+
 function newUser($login, $password) {
   global $link;
   $query="INSERT INTO users (login, password) VALUES('$login', '$password')";
