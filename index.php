@@ -1,4 +1,4 @@
-<?php 
+<?php
 header("Content-Type: text/html; charset=UTF-8");
 include_once("config.php");
 ?>
@@ -81,6 +81,10 @@ background-image:url(media/images/news/2.jpg)
 
 .bg3 {
 background-image:url(media/images/news/3.jpg)
+}
+
+#content {
+    padding: 0 !important;
 }
 </style>
                     <div id="menuWrapper" class="menuWrapper bg1">

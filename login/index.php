@@ -43,7 +43,7 @@ function doIndex() {
         <form action="<?php print $_SERVER["PHP_SELF"]; ?>" method="POST">
             <input type="text" name="login" value="<?php print isset($_POST["login"]) ? $_POST["login"] : "" ; ?>" maxlength="15" placeholder="Логин">
             <input type="password" name="password" value="" maxlength="15" placeholder="Пароль">
-            <input type="text" class="hide" name="hide" value="">
+            <input type="text" class="hide" name="value" value="">
             <input name="submit" type="submit" value="Войти">
             <?php if($messages) { displayErrors($messages); } ?>
         </form>

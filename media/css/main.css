@@ -8,6 +8,8 @@
 html, body {
 	font-family: 'PT Sans';
 	text-rendering: optimizeLegibility;
+	background-image: url(/media/images/bgBody.jpg);
+	background-attachment: fixed;
 }
 
 /* UI */
@@ -21,10 +23,22 @@ a:hover {
 	text-decoration: underline;
 }
 
+.top {
+	width: 50px;
+	height: 50px;
+	position: fixed;
+	right: 0px;
+	top: 50%;
+	bottom: 50%;
+	background-image: url(/media/images/arrow180.png);
+	background-repeat: no-repeat;
+}
+
 input[type='text'], input[type='password'] {
 	position: relative;
 	border: none;
 	height: 32px;
+	width: 100%;
 	line-height: 32px;
 	margin-top: 5px;
 	margin-bottom: 5px;
@@ -35,7 +49,11 @@ input[type='text'], input[type='password'] {
 	vertical-align: middle;
 	text-shadow: none;
 	border-radius: 5px;
+	border-style: solid;
+  	border-width: 1px;
+  	border-color: rgb( 236, 236, 236 );
 }
+
 
 button, input[type='submit'], input[type='button'], #button {
 	position: relative;
@@ -43,21 +61,23 @@ button, input[type='submit'], input[type='button'], #button {
 	height: 32px;
 	line-height: 32px;
 	padding: 0 16px;
-	font-size: 14px;
+  	font-size: 15px;
+  	color: rgb( 255, 255, 255 );
+  	text-align: center;
 	margin-bottom: 5px;
 	color: #fff;
 	text-decoration: none;
 	text-align: center;
 	display: inline-block;
 	vertical-align: middle;
-	background-color: #85144B;
+	background-color: #3D9970;
 	text-shadow: none;
 	cursor: pointer;
 	border-radius: 5px;
 }
 
 button:hover, input[type='submit']:hover, #button:hover {
-	background-color: #FF851B;
+	background-color: #2ECC40;
 	cursor: pointer;
 	text-decoration: none;
 }
@@ -130,7 +150,7 @@ button:hover, input[type='submit']:hover, #button:hover {
 }
 
 .green {
-	background-color: #2ecc40;
+	background-color: #3D9970;
 }
 
 .titleBox {
@@ -147,7 +167,6 @@ button:hover, input[type='submit']:hover, #button:hover {
 	padding: 10px;
 	width: 400px;
 	border-radius: 4px;
-	background-image: url(/media/images/bg.jpg);
 }
 
 	#login_form {
@@ -165,14 +184,13 @@ button:hover, input[type='submit']:hover, #button:hover {
 #page {
 	height: auto;
 	color: #fff;
-	background-image: url(/media/images/bg.jpg);
-	box-shadow: 0 0 20px #ccc;
 	margin: 0 auto;
 	width: 960px;
 }
 
 #content {
 	display: block;
+	padding: 10px;
 }
 
 #userArea {
@@ -246,15 +264,19 @@ button:hover, input[type='submit']:hover, #button:hover {
 							display: none;
 						}
 
+						.realNamePosition {
+							position: relative;
+							left: 40px;
+							line-height: 30px;
+						}
+
 
 #mainPage {
 	margin: 0 auto;
 	width: 960px;
 	height: auto;
-	background-color: #FFF;
 	-webkit-box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 	box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-	background-image: url(/media/images/bg.jpg);
 }
 
 .page {
@@ -356,7 +378,7 @@ button:hover, input[type='submit']:hover, #button:hover {
 	}
 
 		#navigation div:hover {
-			background-color: #39F;
+			background-color: #3D9970;
 			color: #FFF;
 		}
 
@@ -407,15 +429,14 @@ button:hover, input[type='submit']:hover, #button:hover {
 			min-width: 125px;
 			max-width: 300px;
 			height: 30px;
-			background-color: #39F;
+			background-color: #3D9970;
 			color: #fff;
 			line-height: 30px;
 		}
 
 			#navigation ul li:hover {
 				background-color: #fff;
-				
-				color: #39F;
+				color: #3D9970;
 			}
 
 			#navigation li:hover ul{ 
@@ -575,10 +596,6 @@ list-style:none;
 	padding: 10px 10px 0px 10px;
 }
 
-#timetable, #homework {
-	min-height: 480px;
-}
-
 #homework {
 	width: 500px;
 }
@@ -615,18 +632,16 @@ list-style:none;
 }
 
 #timetable {
-	width: 545px;
-	height: 475px;
 }
 
 .timetable_box {
 	margin: 0;
 	padding: 0;
+	color: #fff;
 }
 
 .timetable_box tr th {
-	width: 90px;
-	background-color: #fff;
+	width: 160px;
 	text-align: right;
 	font-weight: normal;
 	font-size: 20px;
@@ -634,11 +649,13 @@ list-style:none;
 
 .timetable_box tr td {
 	width: 50px;
-	height: 65px;
-	color: #000;
+	height: 50px;
 	text-align: center;
-	font-size: 14px;
+	font-size: 16px;
 	cursor: pointer;
+	border: 1px solid #ccc;
+	border-bottom: none;
+	border-left: none;
 }
 /*
 .timetable_box tr td:nth-child(even) {
@@ -649,13 +666,6 @@ list-style:none;
 	background-color: #09F;
 }
 */
-.timetable_box tr td:nth-child(even) {
-	border: 1px solid #09A;
-}
-
-.timetable_box tr td:nth-child(odd) {
-	border: 1px solid #09F;
-}
 
 .lesson:hover::after {
     position: absolute;
@@ -663,10 +673,10 @@ list-style:none;
     padding: 5px 10px;
     border: 1px solid #fff;
     border-radius: 2px;
-    background: #09F;
+    background-color: #3D9970;
     color: #fff;
 	content: attr(data-title);
-    font-size: 10px;
+    font-size: 14px;
     opacity: 0.9;
 }
 
@@ -772,6 +782,7 @@ list-style:none;
 
 #footer {
 	display: block;
+	color: #fff;
 }
 	#footer-content {
 		display: inline-block;
@@ -795,10 +806,6 @@ list-style:none;
 
 			.footer-title {
 				font-size: 24px;
-			}
-
-			#footer-content div li a {
-				color: #FFF;
 			}
 
 				#footer-content div li a:hover {

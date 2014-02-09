@@ -1,7 +1,6 @@
 <?php
 header("Content-Type: text/html; charset=UTF-8");
 include_once("../config.php");
-# Версия сайта
 # Заголовок
 $title = "Гатчинский Педагогический Колледж";
 checkLoggedIn("yes");
@@ -13,6 +12,7 @@ while ($result = mysql_fetch_array($query)) {
 	$real_name = $result['real_name'];
 	$group = $result['groups'];
 	$token = $result['token'];
+	$_SESSION['token'] = $result['token'];
 	$hour_all = $result['hour_all'];
 	$hour_green = $result['hour_green'];
 	$hour_red = $hour_all - $hour_green;
@@ -52,6 +52,11 @@ echo
 		});
 		}
 		</script>
+		<style>
+		#content {
+		padding: 0 !important;
+	}
+		</style>
     </head>
     <body>
 <div id="page">
@@ -118,9 +123,11 @@ while ($mark_resume = mysql_fetch_array($mark)) {
 					$markContent =  "
 					<div id='listOfLessonGroup' class='green'>
 						<div>$subject_id</div>
-						<div class='markLesson center'>
-							<p class=''>$marks</p>
-							<p class=''>$comment</p>
+						<div class='markLesson dropDownMark center'>
+							<div class='dropDownContent'>
+								<p class=''>$marks</p>
+								<p class=''>$comment</p>
+							</div>
 						</div>
 					</div>";
 				}
@@ -181,6 +188,44 @@ echo <<<END
                     </div>
         </div>
 END;
+}
+elseif($token == 'teacher') {
+	echo "<div id='listOfLessonGroup' class='green'><div>Список студентов</div>";
+$query = mysql_query("SELECT * FROM users LIMIT 10") or die(mysql_error());
+while ($mark_resume = mysql_fetch_array($query)) {
+		$num_rows = mysql_num_rows($query);
+		$id = $mark_resume['id'];
+		$hour_all = $mark_resume['hour_all'];
+		$hour_green = $mark_resume['hour_green'];
+		$real_name = $mark_resume['real_name'];
+		$groups = $mark_resume['groups'];
+		$x=0;
+			do
+			{
+					// Выводим данные из таблицы с пользователями
+					$markContent =  "
+						<div class='markLesson center'><span class='left'>$real_name ($groups группа)</span>
+							<div class=''>
+								<input type='text' value='$id' placeholder='Идентификатор'>
+								<input type='text' value='$hour_all' placeholder='Всего пропусков'>
+								<input type='text' value='$hour_green' placeholder='По уважительной'>
+								<input type='text' value='$real_name' placeholder='ФИО'>
+								<input type='text' value='$groups' placeholder='Группа'>
+							</div>
+							</div>
+						";
+				}
+				while ($x++>$num_rows);
+				if(!isset($num_rows))
+			{
+				echo "Нет данных";
+			}
+			else
+			{
+				echo $markContent;
+			}
+	}
+	echo "</div>";
 }
 elseif($token == 'admin') {
 	echo "<div id='listOfLessonGroup' class='green'><div>Список студентов</div><div class='markLesson'>";
