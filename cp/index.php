@@ -11,6 +11,7 @@ while ($result = mysql_fetch_array($query)) {
 	$uid = $result['id'];
 	$real_name = $result['real_name'];
 	$group = $result['groups'];
+	$_SESSION['groups'] = $result['groups'];
 	$token = $result['token'];
 	$_SESSION['token'] = $result['token'];
 	$hour_all = $result['hour_all'];

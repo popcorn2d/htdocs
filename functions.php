@@ -12,7 +12,7 @@ function connectToDB() {
 function getHeader() {
 
 if(isset($_SESSION['login'])) {
-  $settings = '<a href="settings.php" id="button">Настройки</a>';
+  $settings = '<a href="/settings" id="button">Настройки</a>';
   $navi = "Личный кабинет";
 }
 else {
@@ -24,13 +24,12 @@ else {
 <head>
 <meta charset="UTF-8">
 <title>Гатчинский Педагогический Колледж им. К. Д. Ушинского</title>
-<script src="//use.edgefonts.net/pt-sans.js"></script>
+<script async src="//use.edgefonts.net/pt-sans.js"></script>
 <link rel="stylesheet" href="/media/css/main.css">
 <link rel="stylesheet" href="media/css/colorbox.css" type="text/css" media="screen" />
-<script type="text/javascript" src="media/js/jquery.js"></script>
-<script type="text/javascript" src="media/js/jquery.colorbox-min.js"></script>
-<script type="text/javascript" src="media/js/jquery.bgpos.js"></script>
-<script type="text/javascript" src="media/js/core.js"></script>
+<script type="text/javascript" src="/media/js/jquery.js"></script>
+<script type="text/javascript" src="/media/js/jquery.colorbox-min.js"></script>
+<script type="text/javascript" src="/media/js/jquery.bgpos.js"></script>
 </head>
 <body>
 <a href="#top" class="top"></a>
@@ -66,7 +65,15 @@ function getNav() {
                 <a href="#"><li>Test</li></a>
               </ul>
             </li>
+            <li>
                 <a href="#"><div>Абитуриенту</div></a>
+              <ul>
+                <a href="#"><li>Очень очень длинная запись</li></a>
+                <a href="#"><li>Test</li></a>
+                <a href="#"><li>Test</li></a>
+                <a href="#"><li>Test</li></a>
+              </ul>
+            </li>
                 <a href="#"><div>Студенту</div></a>
                 <a href="#"><div>Базовая школа</div></a>
                 <a href="#"><div>Библиотека</div></a>
@@ -74,77 +81,65 @@ function getNav() {
                 <a href="#"><div>Документы</div></a>
                 <a href="#"><div>Контакты</div></a>
             </div>
+            <div id="content">
+END;
+}
+
+function getAdminNav() {
+  echo <<<END
+    <a id='button' href='/settings'>Просмотр всех страниц</a>
+    <a id='button' href='/settings/page-add.php'>Добавить страницу</a>
 END;
 }
 
 // Footer
 
 function getFooter() {
-  $revision = "Revision 0.0.31";
+  $revision = "Revision 0.0.32";
+
+  if(isset($_SESSION['login'])) {
+  $userfooter = '
+  <li><a href="/cp">Привет, '.$_SESSION['login'].'</a></li>
+  <li><a href="/timetable#'.$_SESSION['groups'].'">Расписание</a></li>
+  <li><a href="/logout.php">Выйти</a></li>';
+}
+else {
+  $userfooter = '<li><a href="/login">Войти</a></li>';
+}
   echo <<<END
+  </div>
   <div id="footer">
             <div id="footer-content">
               <div>
-                  <span class="footer-title">Аккаунт</span>
-                      <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Настройки</a></li>
+                  <span class="footer-title">Управление аккаунтом</span>
+                  $userfooter
+                </div>
+                <div>
+                  <span class="footer-title">Отделения</span>
+                        <li><a href="#">Прикладная информатика</a></li>
+                        <li><a href="#">Дошкольное отделеление</a></li>
+                        <li><a href="#">Школьное образование</a></li>
+                        <li><a href="#">Иностранное отделение</a></li>
+                        <li><a href="#">Физкультурное отделение</a></li>
+                        <li><a href="#">Дополнительного образования</a></li>
+                </div>
+                <div>
+                  <span class="footer-title">Нормативные документы</span>
+                        <li><a href="#">Акт</a></li>
+                        <li><a href="#">Устав</a></li>
+                        <li><a href="#">Аккредитация</a></li>
+                        <li><a href="#">Партнёры</a></li>
                         <li><a href="#">Настройки</a></li>
                         <li><a href="#">Настройки</a></li>
                         <li><a href="#">Настройки</a></li>
                         <li><a href="#">Настройки</a></li>
                 </div>
                 <div>
-                  <span class="footer-title">Аккаунт</span>
-                      <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Настройки</a></li>
-                </div>
-                <div>
-                  <span class="footer-title">Аккаунт</span>
-                      <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Настройки</a></li>
-                </div>
-                <div>
-                  <span class="footer-title">Аккаунт</span>
-                      <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Настройки</a></li>
-                </div>
-                <div>
-                  <span class="footer-title">Аккаунт</span>
-                      <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Настройки</a></li>
-                </div>
-                <div>
-                  <span class="footer-title">Аккаунт</span>
-                      <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Настройки</a></li>
+                  <span class="footer-title">Абитуриенту</span>
+                        <li><a href="#">Документы для поступления</a></li>
+                        <li><a href="#">Приёмная комиссия</a></li>
+                        <li><a href="#">Проходной балл</a></li>
+                        <li><a href="#">Списки поступивших</a></li>
                         <li><a href="#">Настройки</a></li>
                         <li><a href="#">Настройки</a></li>
                         <li><a href="#">Настройки</a></li>
@@ -162,7 +157,7 @@ style="width:88px; height:31px; border:0; display:none;" alt="Яндекс.Ме�
 <!-- /Yandex.Metrika informer -->
 
 <!-- Yandex.Metrika counter -->
-<script type="text/javascript">
+<script async type="text/javascript">
 (function (d, w, c) {
     (w[c] = w[c] || []).push(function() {
         try {

@@ -4,7 +4,6 @@ include_once("config.php");
 ?>
 <?php getHeader(); ?>
 <?php getNav() ?>
-<div id="content">
 <?php
 
 if (!isset($_GET['id'])) {
@@ -22,7 +21,9 @@ if (!isset($_GET['id'])) {
 	}
 			if(!isset($num_rows))
 				{
-					echo "Нет данных";
+					header('Status: 404 Not Found');
+					header('HTTP/1.1 404 Not Found');
+					echo "<h1>Страница не найдена. <a href='/'>На главную</a></h1>";
 				}
 				else
 				{
@@ -30,5 +31,4 @@ if (!isset($_GET['id'])) {
 				}
 }
 ?>
-</div>
 <?php getFooter(); ?>

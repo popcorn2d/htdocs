@@ -34,11 +34,12 @@ a:hover {
 	background-repeat: no-repeat;
 }
 
-input[type='text'], input[type='password'] {
+input[type='text'], input[type='password'], textarea {
 	position: relative;
 	border: none;
 	height: 32px;
 	width: 100%;
+	max-width: 940px;
 	line-height: 32px;
 	margin-top: 5px;
 	margin-bottom: 5px;
@@ -52,6 +53,10 @@ input[type='text'], input[type='password'] {
 	border-style: solid;
   	border-width: 1px;
   	border-color: rgb( 236, 236, 236 );
+}
+
+textarea {
+	min-height: 200px;
 }
 
 
@@ -74,32 +79,13 @@ button, input[type='submit'], input[type='button'], #button {
 	text-shadow: none;
 	cursor: pointer;
 	border-radius: 5px;
+	z-index: 1
 }
 
 button:hover, input[type='submit']:hover, #button:hover {
 	background-color: #2ECC40;
 	cursor: pointer;
 	text-decoration: none;
-}
-
-.button {
-	float: left;
-	padding-right: 10px;
-	padding-left: 10px;
-	width: auto;
-	height: auto;
-	border-right: 1px solid #fff;
-	background-color: #09F;
-	border-radius: 0px;
-	color: #fff;
-	font-size: 14px;
-	line-height: 40px;
-}
-
-.button:hover {
-	background-color: #09A !important;
-	color: #FFF;
-	text-decoration: none !important;
 }
 
 .disable {
@@ -137,6 +123,13 @@ button:hover, input[type='submit']:hover, #button:hover {
 
 .border {
 	border-radius: 10px;
+}
+
+.padding20 {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 40px;
+	padding-right: 40px;
 }
 
 /* Цвета */
@@ -186,6 +179,7 @@ button:hover, input[type='submit']:hover, #button:hover {
 	color: #fff;
 	margin: 0 auto;
 	width: 960px;
+	z-index: 1;
 }
 
 #content {
@@ -399,6 +393,7 @@ button:hover, input[type='submit']:hover, #button:hover {
 		position:relative;
 		display:block;
 		font-size: 12px;
+		z-index: 49;
 	}
 
 		#navigation li a{
@@ -413,8 +408,13 @@ button:hover, input[type='submit']:hover, #button:hover {
 			}
 
 .action {
-	background-color: #39F;
+	background-color: #2ECC40 !important;
 	color: #FFF !important;
+}
+
+.action:hover {
+	background-color: #2ECC40 !important;
+
 }
 
 /*--- ВЫПАДАЮЩИЕ ПУНКТЫ ---*/
@@ -439,7 +439,8 @@ button:hover, input[type='submit']:hover, #button:hover {
 				color: #3D9970;
 			}
 
-			#navigation li:hover ul{ 
+			#navigation li:hover ul{
+				position: absolute;
 				left:0;
 				opacity:1;
 			}
@@ -464,6 +465,10 @@ button:hover, input[type='submit']:hover, #button:hover {
 	display: block;
 	height: auto;
 }
+
+	#content a {
+		color: #fff;
+	}
 
 .menuWrapper {
 margin: 0 auto;
@@ -513,7 +518,7 @@ list-style:none;
 		margin-top:450px;
 		width:320px;
 		height:50px;
-		background-color:#39F;
+		background-color: #3D9970;
 		color:#fff;
 		text-align:center;
 		text-decoration:none;
@@ -638,13 +643,19 @@ list-style:none;
 	margin: 0;
 	padding: 0;
 	color: #fff;
+	width: 100%;
 }
 
 .timetable_box tr th {
 	width: 160px;
 	text-align: right;
 	font-weight: normal;
+	border: none !important;
 	font-size: 20px;
+}
+
+.timetable td th {
+	border: none;
 }
 
 .timetable_box tr td {
@@ -652,7 +663,6 @@ list-style:none;
 	height: 50px;
 	text-align: center;
 	font-size: 16px;
-	cursor: pointer;
 	border: 1px solid #ccc;
 	border-bottom: none;
 	border-left: none;
@@ -796,7 +806,7 @@ list-style:none;
 			float: left;
 			margin: 0 auto;
 			padding: 10px;
-			width: 140px;
+			width: 220px;
 		}
 
 			#footer-content div li {
@@ -805,7 +815,8 @@ list-style:none;
 			}
 
 			.footer-title {
-				font-size: 24px;
+				font-size: 18px;
+				font-weight: bold;
 			}
 
 				#footer-content div li a:hover {
@@ -813,7 +824,7 @@ list-style:none;
 				}
 
 #copy {
-	padding: 5px;
+	padding: 10px;
 }
 
 	#footer a {
