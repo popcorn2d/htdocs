@@ -38,7 +38,7 @@ else {
             $settings
             <a href="/timetable" id="button">Расписание</a>
             <a href="/" id="button">Файлы</a>
-            <a href="/archive" id="button" >Архив</a>
+            <a href="/" id="button" class="disable" title="В разработке">Архив</a>
             <a href="/" id="button" class="disable" title="В разработке">Урок</a>
             <a href="/login" id="button" class="right">$navi</a>
         </div>
@@ -89,8 +89,6 @@ function getAdminNav() {
   echo <<<END
     <a id='button' href='/settings'>Просмотр всех страниц</a>
     <a id='button' href='/settings/page-add.php'>Добавить страницу</a>
-    <a id='button' href='/settings/resume.php'>Управление лекциями</a>
-    <a id='button' href='/settings/resume-add.php'>Добавить лекцию</a>
 END;
 }
 
@@ -131,6 +129,10 @@ else {
                         <li><a href="#">Устав</a></li>
                         <li><a href="#">Аккредитация</a></li>
                         <li><a href="#">Партнёры</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
                 </div>
                 <div>
                   <span class="footer-title">Абитуриенту</span>
@@ -138,6 +140,10 @@ else {
                         <li><a href="#">Приёмная комиссия</a></li>
                         <li><a href="#">Проходной балл</a></li>
                         <li><a href="#">Списки поступивших</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
+                        <li><a href="#">Настройки</a></li>
                 </div>
             </div>
             <div id="line"></div>

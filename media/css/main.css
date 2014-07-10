@@ -793,8 +793,6 @@ list-style:none;
 #footer {
 	display: block;
 	color: #fff;
-	width: 960px;
-	margin: 0 auto
 }
 	#footer-content {
 		display: inline-block;

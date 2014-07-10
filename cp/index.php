@@ -186,7 +186,8 @@ while ($result_resume = mysql_fetch_array($resume)) {
 				echo $resumeContent;
 			}
 echo <<<END
-</div></div>
+                    </div>
+        </div>
 END;
 }
 elseif($token == 'teacher') {
@@ -263,5 +264,5 @@ while ($mark_resume = mysql_fetch_array($query)) {
 echo "</div></div>";
 }
 mysql_close();
-getFooter();
 ?>
+<?php getFooter(); ?>
